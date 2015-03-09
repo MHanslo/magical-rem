@@ -1,0 +1,130 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1')
+    title Magical REM
+
+    link(rel='stylesheet', type='text/css', href='build/build.css')
+    link(rel='stylesheet', type='text/css', href='build/prism-tomorrow.css')
+
+  style.
+    .orion {
+      background-image: url('images/orion.jpg')
+    }
+    .map {
+      background-image: url('images/map.jpg')
+    }
+    .img {
+      height: 100%;
+    }
+
+  body
+
+    article
+
+      section
+        h1 Magical REM
+
+      section(data-bespoke-backdrop='orion')
+        h2 Responsive Font Sizing
+        h3 You're doing it wrong
+
+      section
+        h2 Font Sizing
+        h3 two techniques
+        ul
+          li Size with px
+          li Size with em
+
+      section
+        h2 Sizing with px
+        h3 The reliable and consistent way
+
+      section
+        code.language-css
+          pre.
+            .some-div {
+              font-size: 30px;
+            }
+            @media (max-width: 1000px) {
+              .some-div { font-size: 22px; }
+            }
+            @media (max-width: 500px) {
+              .some-div { font-size: 13px; }
+            }
+
+      section(data-bespoke-backdrop='emphatic')
+        h2 The Problem?
+        h3 Imagine 50 different font-size declarations in px within your stylesheet
+        p That's 50 fail points
+
+      section
+        h2 Sizing with em
+        h3 Relative to its parent font size.
+        br
+        code.language-css
+          pre.
+            body { font-size: 62.5%; }
+            h1 { font-size: 2.4em; } /* =24px */
+            p  { font-size: 1.4em; } /* =14px */
+
+      section(data-bespoke-backdrop='emphatic')
+        h2 The Problem?
+        h3 Font size compounds!
+        p A div within a 14em div isn't 14px, it's 20px. Go another level deeper and it's 27px!
+
+      section(data-bespoke-backdrop='map')
+        h2 Sizing with rem
+        h3 Relative to the root - or the html - element.
+        p Define a single font size on the html element and define all rem units to be a percentage of that.
+        br
+        code.language-css
+          pre.
+            html { font-size: 62.5%; }
+            body { font-size: 1.4rem; } /* =14px */
+            h1   { font-size: 2.4rem; } /* =24px */
+
+      section
+        h2 The best part of REM?
+        h3 Elegant cascading using media queries on only one element
+        code.language-css
+          pre.
+            html { font-size: 62.5%; }
+            @media (max-width: 1000px) {
+              html { font-size: 55%; }
+            }
+            @media (max-width: 500px) {
+              html { font-size: 48%; }
+            }
+
+      section
+        h2 But what about browser support?
+        h3 You might be surprised...
+
+      section
+        img(src='images/snapshot.jpg' class="img")
+
+      section
+        h2 Gotchas
+        ul
+          li No IE 8 or Opera Mini support (Modernizr to the rescue!)
+          li IE 9 & IE 10 do not support rem units when used in the font shorthand property
+          li IE 9, 10 and 11 do not support rem units when used in the "line-height" property when used on :before and :after pseudo elements
+          li Borders sized in "rem" disappear when the page is zoomed out in Chrome.
+
+      section
+        h2 Questions? Keep in mind...
+        ul
+          li Skeleton.css uses rem by default
+          li Bootstrap V4 will be moving to rem units*
+
+      section
+        h3 References
+        ul
+          li  http://snook.ca/archives/html_and_css/font-size-with-rem
+          li  https://github.com/twbs/bootstrap/issues/1943#issuecomment-21700130
+          li  https://css-tricks.com/theres-more-to-the-css-rem-unit-than-font-sizing/
+
+
+    script(src='build/build.js')

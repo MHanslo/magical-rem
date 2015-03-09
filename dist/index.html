@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Magical REM</title>
+    <link rel="stylesheet" type="text/css" href="build/build.css">
+    <link rel="stylesheet" type="text/css" href="build/prism-tomorrow.css">
+  </head>
+  <style>
+    .orion {
+      background-image: url('images/orion.jpg')
+    }
+    .map {
+      background-image: url('images/map.jpg')
+    }
+    .img {
+      height: 100%;
+    }
+    
+  </style>
+  <body>
+    <article>
+      <section>
+        <h1>Magical REM</h1>
+      </section>
+      <section data-bespoke-backdrop="orion">
+        <h2>Responsive Font Sizing</h2>
+        <h3>You're doing it wrong</h3>
+      </section>
+      <section>
+        <h2>Font Sizing</h2>
+        <h3>two techniques</h3>
+        <ul>
+          <li>Size with px</li>
+          <li>Size with em</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Sizing with px</h2>
+        <h3>The reliable and consistent way</h3>
+      </section>
+      <section><code class="language-css">
+          <pre>.some-div {
+  font-size: 30px;
+}
+@media (max-width: 1000px) {
+  .some-div { font-size: 22px; }
+}
+@media (max-width: 500px) {
+  .some-div { font-size: 13px; }
+}
+</pre></code></section>
+      <section data-bespoke-backdrop="emphatic">
+        <h2>The Problem?</h2>
+        <h3>Imagine 50 different font-size declarations in px within your stylesheet</h3>
+        <p>That's 50 fail points</p>
+      </section>
+      <section>
+        <h2>Sizing with em</h2>
+        <h3>Relative to its parent font size.</h3><br><code class="language-css">
+          <pre>body { font-size: 62.5%; }
+h1 { font-size: 2.4em; } /* =24px */
+p  { font-size: 1.4em; } /* =14px */
+</pre></code>
+      </section>
+      <section data-bespoke-backdrop="emphatic">
+        <h2>The Problem?</h2>
+        <h3>Font size compounds!</h3>
+        <p>A div within a 14em div isn't 14px, it's 20px. Go another level deeper and it's 27px!</p>
+      </section>
+      <section data-bespoke-backdrop="map">
+        <h2>Sizing with rem</h2>
+        <h3>Relative to the root - or the html - element.</h3>
+        <p>Define a single font size on the html element and define all rem units to be a percentage of that.</p><br><code class="language-css">
+          <pre>html { font-size: 62.5%; }
+body { font-size: 1.4rem; } /* =14px */
+h1   { font-size: 2.4rem; } /* =24px */
+</pre></code>
+      </section>
+      <section>
+        <h2>The best part of REM?</h2>
+        <h3>Elegant cascading using media queries on only one element</h3><code class="language-css">
+          <pre>html { font-size: 62.5%; }
+@media (max-width: 1000px) {
+  html { font-size: 55%; }
+}
+@media (max-width: 500px) {
+  html { font-size: 48%; }
+}
+</pre></code>
+      </section>
+      <section>
+        <h2>But what about browser support?</h2>
+        <h3>You might be surprised...</h3>
+      </section>
+      <section><img src="images/snapshot.jpg" class="img"></section>
+      <section>
+        <h2>Gotchas</h2>
+        <ul>
+          <li>No IE 8 or Opera Mini support (Modernizr to the rescue!)</li>
+          <li>IE 9 & IE 10 do not support rem units when used in the font shorthand property</li>
+          <li>IE 9, 10 and 11 do not support rem units when used in the "line-height" property when used on :before and :after pseudo elements</li>
+          <li>Borders sized in "rem" disappear when the page is zoomed out in Chrome.</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Questions? Keep in mind...</h2>
+        <ul>
+          <li>Skeleton.css uses rem by default</li>
+          <li>Bootstrap V4 will be moving to rem units*</li>
+        </ul>
+      </section>
+      <section>
+        <h3>References</h3>
+        <ul>
+          <li> http://snook.ca/archives/html_and_css/font-size-with-rem</li>
+          <li> https://github.com/twbs/bootstrap/issues/1943#issuecomment-21700130</li>
+          <li> https://css-tricks.com/theres-more-to-the-css-rem-unit-than-font-sizing/</li>
+        </ul>
+      </section>
+    </article>
+    <script src="build/build.js"></script>
+  </body>
+</html>
